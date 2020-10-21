@@ -17,6 +17,7 @@ router.post("file/banner/upload/:userId", uploadBanner);
 // Pensé que sería buena idea agregar el :userId para identificar donde se subiría el banner y avatar
 // Si no ambas funciones en el controller serían identicas usando el findOneAndUpdate()
 
+
 //params
 router.param("userId", userById);
 
