@@ -1,7 +1,17 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const bodyParser = require("body-parser");
+const expressValidator = require("express-validator");
 require("dotenv").config();
 
+//import routes
+const Auth = require("./routes/auth");
+const User = require("./routes/user");
+const File = require("./routes/file");
+const Tweet = require("./routes/tweet");
+const Relation = require("./routes/relation");
+
+//app express
 const app = express();
 
 //db
@@ -23,6 +33,17 @@ const db = async () => {
 }
 db();
 
+//middleware
+app.use(bodyParser.json());
+app.use(expressValidator());
+
+
+//routes middleare
+app.use("/api", Auth);
+app.use("/api", User);
+app.use("/api", File);
+app.use("/api", Tweet);
+app.use("/api", Relation);
 
 //port
 const port = process.env.PORT || 8000;
